@@ -76,4 +76,3 @@ function isCorrect(e) {
 
 }
 
-export default isCorrect
