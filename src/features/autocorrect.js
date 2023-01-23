@@ -1,5 +1,5 @@
 //target all inputs
-const allInputEL = document.querySelectorAll('input')
+const allInputEL = document.querySelectorAll("input")
 
 //correct answers
 let correctObj = {
@@ -58,21 +58,26 @@ function isCorrect(e) {
     //take information from the target
     console.log(e.target.id, 'Yes I am here')
     if (e.target.id in correctObj) {
+        console.log(e.target.value, "value")
+        if (e.target.value === '') {
+            let myId = document.getElementById(e.target.id).removeAttribute("style")
+            return myId
+        }
         // compare values target with key
         if (e.target.value.toLowerCase() === correctObj[e.target.id]) {
-            // append to specific area on the body so it shows
             let value = correctObj[e.target.id]
             // get the id  to append to
             let myId = document.getElementById(e.target.id).setAttribute("style", "border-width:.5em; border-color:#7FFFD4;")
             alert("This is correct!")
             console.log("Yes I work", value, myId)
+
+        } else if (e.target.value.toLowerCase() !== correctObj[e.target.id]) {
+            let myId = document.getElementById(e.target.id).setAttribute("style", "border-width:.5em; border-color:#FF0000")
+            console.log("wrong")
         } else {
             let myId = document.getElementById(e.target.id).removeAttribute("style")
-            console.log("wrong")
-
         }
         //Todo make guard so that does fire until the word length is equal or more than the correct answer
     }
 
 }
-
